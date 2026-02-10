@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта радиостанций Татарстана</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-radio"></i> Радиостанции Татарстана</h1>
+            <a href="AIRadio.html"><h1>Подберите Радиостанции для себя</h1></a>
+            <p class="subtitle">Наведите курсор на город, чтобы увидеть популярные радиостанции</p>
+        </header>
+
+        <main>
+            <div class="map-container">
+                <!-- SVG карта Татарстана -->
+                <svg class="tatmap" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Область Татарстана -->
+                    <!--<path id="tataria" class="region" d="M200,100 L300,150 L400,120 L500,180 L600,130 L550,250 L450,300 L350,280 L250,350 L150,300 L180,200 Z"/>-->
+                    <!-- Города (упрощенные точки) -->
+                    <g class="cities">
+                        <!-- Казань -->
+                        <circle id="kazan" class="city" cx="350" cy="200" r="12" data-city="Казань" data-stations='[
+                            {"name": "Татар радиосы", "freq": "100.5 FM", "genre": "Татарская музыка"},
+                            {"name": "Европа Плюс", "freq": "106.8 FM", "genre": "Поп-музыка"},
+                            {"name": "Авторадио", "freq": "103.3 FM", "genre": "Русские хиты"}
+                        ]'/>
+                        <text x="350" y="190" text-anchor="middle" class="city-label">Казань</text>
+                        
+                        <!-- Набережные Челны -->
+                        <circle id="nabchelny" class="city" cx="450" cy="400" r="10" data-city="Набережные Челны" data-stations='[
+                            {"name": "Дорожное радио", "freq": "96.0 FM", "genre": "Автохиты"},
+                            {"name": "Русское радио", "freq": "101.2 FM", "genre": "Русская музыка"},
+                            {"name": "Energy", "freq": "104.8 FM", "genre": "Танцевальная"}
+                        ]'/>
+                        <text x="450" y="390" text-anchor="middle" class="city-label">Наб. Челны</text>
+                        
+                        <!-- Альметьевск -->
+                        <circle id="almetyevsk" class="city" cx="400" cy="510" r="9" data-city="Альметьевск" data-stations='[
+                            {"name": "Хит FM", "freq": "102.4 FM", "genre": "Поп-хиты"},
+                            {"name": "Наше радио", "freq": "99.3 FM", "genre": "Рок"},
+                            {"name": "Вести FM", "freq": "98.2 FM", "genre": "Новости"}
+                        ]'/>
+                        <text x="400" y="500" text-anchor="middle" class="city-label">Альметьевск</text>
+                        
+                        <!-- Нижнекамск -->
+                        <circle id="nizhnekamsk" class="city" cx="550" cy="230" r="9" data-city="Нижнекамск" data-stations='[
+                            {"name": "Love Radio", "freq": "106.2 FM", "genre": "Любовные баллады"},
+                            {"name": "Такси FM", "freq": "100.0 FM", "genre": "Разговорное"},
+                            {"name": "Comedy Radio", "freq": "94.4 FM", "genre": "Юмор"}
+                        ]'/>
+                        <text x="550" y="220" text-anchor="middle" class="city-label">Нижнекамск</text>
+                        
+                        <!-- Елабуга -->
+                        <circle id="yelabuga" class="city" cx="380" cy="320" r="8" data-city="Елабуга" data-stations='[
+                            {"name": "Ретро FM", "freq": "88.3 FM", "genre": "Ретро хиты"},
+                            {"name": "Юмор FM", "freq": "92.5 FM", "genre": "Юмор"},
+                            {"name": "Восток FM", "freq": "95.7 FM", "genre": "Восточная музыка"}
+                        ]'/>
+                        <text x="380" y="310" text-anchor="middle" class="city-label">Елабуга</text>
+                        
+                        <!-- Бугульма -->
+                        <circle id="bugulma" class="city" cx="260" cy="400" r="8" data-city="Бугульма" data-stations='[
+                            {"name": "DFM", "freq": "98.3 FM", "genre": "Танцевальная"},
+                            {"name": "Авторадио", "freq": "99.4 FM", "genre": "Русские хиты"},
+                            {"name": "Маруся FM", "freq": "88.7 FM", "genre": "Поп-хиты"}
+                        ]'/>
+                        <text x="260" y="390" text-anchor="middle" class="city-label">Бугульма</text>
+                    </g>
+                </svg>
+                
+                <!-- Панель с информацией о радиостанциях -->
+                <div class="radio-panel">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-city"></i> <span id="city-name">Выберите город</span></h2>
+                        <p class="station-count" id="station-count">Наведите на город на карте</p>
+                    </div>
+                    
+                    <div class="stations-container" id="stations-container">
+                        <div class="empty-state">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Наведите курсор на любой город на карте, чтобы увидеть популярные радиостанции</p>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-footer">
+                        <p><i class="fas fa-info-circle"></i> Все радиочастоты указаны для FM-диапазона</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2026 Карта радиостанций Татарстана | Данные о радиостанциях могут изменяться| Максим Кириллов :)</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
