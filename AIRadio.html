@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рекомендатор радиостанций Татарстана</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 Радиостанции Татарстана</h1>
+            <p class="subtitle">Ответьте на несколько вопросов, и мы порекомендуем вам подходящую радиостанцию</p>
+        </header>
+
+        <main>
+            <div class="form-section" id="questionnaire">
+                <h2>Анкета</h2>
+                
+                <div class="question">
+                    <label>1. Какой жанр музыки вы предпочитаете?</label>
+                    <select id="genre">
+                        <option value="0">Поп-музыка</option>
+                        <option value="1">Татарская эстрада</option>
+                        <option value="2">Татарские народные песни</option>
+                        <option value="3">Шлягеры и ретро</option>
+                        <option value="4">Рок музыка</option>
+                        <option value="5">Танцевальная музыка</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>2. Как часто вы слушаете радио?</label>
+                    <select id="frequency">
+                        <option value="0">Постоянно</option>
+                        <option value="1">Несколько раз в день</option>
+                        <option value="2">Раз в день</option>
+                        <option value="3">Несколько раз в неделю</option>
+                        <option value="4">Редко</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>3. Предпочитаете ли вы передачи на татарском языке?</label>
+                    <select id="language">
+                        <option value="0">Только на татарском</option>
+                        <option value="1">В основном на татарском</option>
+                        <option value="2">Смешанные (татарский и русский)</option>
+                        <option value="3">Без предпочтений</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>4. Ваш возраст?</label>
+                    <select id="age">
+                        <option value="0">До 18 лет</option>
+                        <option value="1">18-25 лет</option>
+                        <option value="2">26-35 лет</option>
+                        <option value="3">36-50 лет</option>
+                        <option value="4">Старше 50 лет</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label>5. Нравится ли вам слушать новости и аналитические программы?</label>
+                    <select id="news">
+                        <option value="0">Очень нравится</option>
+                        <option value="1">Интересно иногда</option>
+                        <option value="2">Нейтрально</option>
+                        <option value="3">Не люблю</option>
+                    </select>
+                </div>
+
+                <button id="submitBtn" class="btn">Получить рекомендацию</button>
+            </div>
+
+            <div class="result-section" id="result" style="display: none;">
+                <h2>🎯 Рекомендуемая радиостанция</h2>
+                <div id="stationInfo"></div>
+                <button id="restartBtn" class="btn">Пройти еще раз</button>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Анализируем ваши ответы...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

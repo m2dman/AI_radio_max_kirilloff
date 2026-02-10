@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 100, 200, 0.1);
+}
+
+h1 {
+    color: #0066cc;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #6699cc;
+    font-size: 1.1em;
+}
+
+.form-section, .result-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 100, 200, 0.1);
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #0066cc;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.question {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e6f2ff;
+}
+
+.question:last-child {
+    border-bottom: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #336699;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #99ccff;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f7fbff;
+    color: #336699;
+    transition: all 0.3s;
+}
+
+select:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #0066cc 0%, #3399ff 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #0052a3 0%, #267ae6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.2);
+}
+
+.station-card {
+    background: #f7fbff;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid #0066cc;
+    margin: 25px 0;
+}
+
+.station-name {
+    color: #0066cc;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.station-description {
+    color: #6699cc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.station-details {
+    color: #336699;
+    font-size: 0.9em;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #0066cc;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #6699cc;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .form-section, .result-section {
+        padding: 20px;
+    }
+}
